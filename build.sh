@@ -8,9 +8,14 @@
 #echo "=========================="
 #echo $PATH
 
-echo "\naws-vault exec nick.brell -d 12h"
+#echo "\naws-vault exec nick.brell -d 12h"
+echo "\necho Milo123*** | aws-vault exec nick.brell -d 12h"
 echo "********************************************************************"
+#aws-vault exec nick.brell -d 12h
+echo Milo123*** | aws-vault exec nick.brell -d 12h
 aws-vault exec nick.brell -d 12h
+
+
 
 echo "\ndocker-compose -f deploy/docker-compose.yml run --rm terraform init"
 echo "********************************************************************"
