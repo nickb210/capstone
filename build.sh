@@ -15,8 +15,8 @@ aws-vault list
 
 echo "\naws-vault exec nick.brell -d 12h"
 echo "********************************************************************"
-aws-vault exec nick.brell -d 12h
-echo $AWS_VAULT
+#aws-vault exec nick.brell -d 12h
+#echo $AWS_VAULT
 
 
 echo "\ndocker-compose -f deploy/docker-compose.yml run --rm terraform init"
