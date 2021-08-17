@@ -16,8 +16,8 @@ aws-vault list
 
 echo "\naws-vault exec nick.brell -d 12h"
 echo "********************************************************************"
-aws-vault exec nick.brell -d 12h
-aws-vault list
+#aws-vault exec nick.brell -d 12h
+aws-vault exec nick.brell --no-session
 #echo $AWS_VAULT
 
 
