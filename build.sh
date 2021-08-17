@@ -1,8 +1,8 @@
 #!/bin/bash
 
-#echo "printenv"
-#echo "==========================="
-#printenv
+echo "printenv"
+echo "==========================="
+printenv
 
 #echo "echo PATH"
 #echo "=========================="
