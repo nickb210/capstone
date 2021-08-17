@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+
+<style>
+  .wrapper {
+      margin: auto;
+      display: block;
+  }
+
+  body {
+    background-color:lightgreen;
+  }
+
+  label {
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+  }
+
+  input {
+    font-family: 'Courier New', Courier, monospace;
+  }
+
+  .button {
+    font-family: 'Courier New', Courier, monospace;
+    border: none;
+    margin: 4px 2px;
+    display: inline-block;
+    text-decoration: none;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 4px;
+    margin: 5px;
+
+  }
+  
+
+</style>
+
+
+
+<body>
+  <form>
+    <label for="username" class="wrapper">Username:</label>
+    <input type="text" id="username" name="username" placeholder="username" class="wrapper">
+  
+    <label for="password" class="wrapper">Password:</label>
+    <input type="text" id="password" name="password" placeholder="password" class="wrapper">
+
+    <div style="text-align: center; border: none">
+        <button type="submit" class="button" name="login" value="login" formmethod="post">
+          Login
+        </button>
+    </div>
+
+  </form>
+  
+</body>
+
+
+</html>

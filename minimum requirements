@@ -1,0 +1,18 @@
+Minimum Requirements:
+
+-> Create a REST API with functionality to allow for creation of users and changing of passwords. Username and password must be stored in a database and the password must be salted and hashed. 
+	-> The REST API must then be containerized and available on Docker Hub.
+ 
+
+-> Terraform should be used to spin up a new AWS instance to host the docker image. Demonstration of the API endpoints is required. 
+
+
+->An issue submitted in Jira will kick a job off in Jenkins to build the container with Terraform. 
+	-> Code for the pipeline will be pulled from Git and your REST API must be tested using Selenium to ensure functionality. 
+
+
+-> Once the job is completed, the Jira ticket should get auto updated to show the completed status. Changes to the code are required to demonstrate building/rebuilding of the pipeline. 
+
+
+-> A visio diagram of the environment layout is required as well as a slideshow. Slideshow must include information about each technology used and explain the integrations. Presentations are expected to be 45 minutes long followed by 15 minutes for questions and answers. Dry runs will be required before the final presentation day.
+

@@ -1,0 +1,24 @@
+# this is a docker file for setting up Terraform
+version: '3.7'
+
+# define our services
+services:
+    terraform:
+        # specify which Terraform docker image to use (hub.docker.com)
+        image: hashicorp/terraform:latest
+
+        # map the volume of our local directory where all of our Terraform 
+        # files are, to the "/infra" directory on our service
+        volumes:
+            - .:/infra
+
+        # we we run our service, work from /infra directory
+        working_dir: /infra
+
+        # Specify ENV variables
+        # Pass our AWS credentials from our local machine into the ENV variables inside
+        # of our Docker container
+        environment:
+            - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+            - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+            - AWS_SESSION_TOKEN=${AWS_SESSION_TOKEN}
