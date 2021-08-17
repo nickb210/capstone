@@ -8,6 +8,7 @@
 #echo "=========================="
 #echo $PATH
 
+ls
 
 echo "\naws-vault list"
 echo "********************************************************************"
@@ -15,7 +16,8 @@ aws-vault list
 
 echo "\naws-vault exec nick.brell -d 12h"
 echo "********************************************************************"
-#aws-vault exec nick.brell -d 12h
+aws-vault exec nick.brell -d 12h
+aws-vault list
 #echo $AWS_VAULT
 
 
