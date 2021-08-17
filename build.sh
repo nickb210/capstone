@@ -9,4 +9,5 @@
 #echo $PATH
 
 
+docker-compose -f deploy/docker-compose.yml run --rm terraform init
 docker-compose -f deploy/docker-compose.yml run --rm terraform plan
