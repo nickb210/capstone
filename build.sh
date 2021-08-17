@@ -7,6 +7,7 @@
 #echo "echo PATH"
 #echo "=========================="
 #echo $PATH
+echo ""
 
 #echo "\naws-vault exec nick.brell -d 12h"
 echo "\necho Milo123*** | aws-vault exec nick.brell -d 12h"
