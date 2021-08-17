@@ -29,6 +29,10 @@ override.tf.json
 # example: *tfplan*
 
 
-*.txt
+docker-ref.txt
+docker-terraform-ref.txt
+jenkins-ref.txt
+minimum requirements
+notes.txt
 
 aws_account_id
