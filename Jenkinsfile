@@ -1,8 +1,11 @@
 pipeline {
     agent any
 
-    tool name: 'Terraform', type: 'terraform'
+    tools {
+        terraform 'Terraform'
+    }
     
+
     parameters {
         string(name: 'environment', defaultValue: 'default', description: 'Workspace/environment file to use for deployment')
         string(name: 'version', defaultValue: '', description: 'Version variable to pass to Terraform')
