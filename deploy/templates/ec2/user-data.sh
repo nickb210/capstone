@@ -9,8 +9,8 @@ sudo systemctl start docker.service
 # add our EC2 user to the Docker group
 sudo usermod -aG docker ec2-user
 
- aws ecr get-login --no-include-email --region us-east-1
-$(aws ecr get-login --no-include-email --region us-east-1)
+#aws ecr get-login --no-include-email --region us-east-1
+#$(aws ecr get-login --no-include-email --region us-east-1)
 
 # pull docker image from Docker Hub
 sudo docker pull nickb09/capstone:latest
