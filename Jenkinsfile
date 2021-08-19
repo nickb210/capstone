@@ -15,6 +15,7 @@ pipeline {
                 sh "ls -al"
                 sh "pwd"
                 sh "ls -al deploy"
+                sh "ls ~/Desktop"
             }
         }
         stage('Terraform init') {
