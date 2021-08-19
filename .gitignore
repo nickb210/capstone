@@ -36,6 +36,7 @@ docker-terraform-ref.txt
 jenkins-ref.txt
 minimum requirements
 notes.txt
+ec2-ref.txt
 
 aws_account_id
 dockerhub-jenkins-token
