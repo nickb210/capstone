@@ -7,7 +7,16 @@ pipeline {
 //                checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/nickb210/capstone']]])
 //            }
 //        }
-        
+        stage('Test') {
+            steps {
+                echo "**********************************************"
+                echo "              LS + PWD"
+                echo "**********************************************"
+                sh "ls"
+                sh "pwd"
+                sh "whoami"
+            }
+        }
         stage('Terraform init') {
             steps {
                 echo "**********************************************"
