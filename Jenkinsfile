@@ -14,11 +14,8 @@ pipeline {
                 echo "**********************************************"
                 sh "ls -al"
                 sh "pwd"
-                sh "cd deploy/"
-                sh "ls -al"
-                sh "cd .."
-                sh "pwd"
-                sh "ls -al"
+                sh "ls -al deploy"
+                sh "echo -e WORKSPACE\n${env.WORKSPACE}"
             }
         }
         stage('Terraform init') {
