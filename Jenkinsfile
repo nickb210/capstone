@@ -14,7 +14,11 @@ pipeline {
                 echo "**********************************************"
                 sh "ls -al"
                 sh "pwd"
-                sh "whoami"
+                sh "cd deploy/"
+                sh "ls -al"
+                sh "cd .."
+                sh "pwd"
+                sh "ls -al"
             }
         }
         stage('Terraform init') {
