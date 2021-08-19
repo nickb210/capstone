@@ -12,10 +12,17 @@ pipeline {
                 echo "**********************************************"
                 echo "              LS + PWD"
                 echo "**********************************************"
-                sh "ls -al"
                 sh "pwd"
-                sh "ls -al deploy"
-                sh "ls ~/Desktop"
+                sh "ls -al"
+                dir('deploy') {
+                    sh "pwd"
+                    sh "ls -al"
+                }
+                dir('../') {
+                    sh "pwd"
+                    sh "ls -al"
+                }
+
             }
         }
         stage('Terraform init') {
