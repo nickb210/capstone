@@ -1,9 +1,6 @@
 pipeline {
     agent any
     
-    environment {
-        PRIVATE_KEY = "/Users/nicholausbrell/Desktop/capstone/deploy/fake-key.pem"
-    }
     stages {
 //        stage('Checkout') {
 //            steps {
@@ -24,7 +21,7 @@ pipeline {
                 }
                 sh "pwd"
                 sh "ls -al"
-                sh "ls -alh ${PRIVATE_KEY}"
+                sh "ls -alh ${env.PRIVATE_KEY}"
 
             }
         }
