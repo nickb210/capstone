@@ -14,14 +14,13 @@ pipeline {
                 echo "**********************************************"
                 sh "pwd"
                 sh "ls -al"
+
                 dir('deploy') {
                     sh "pwd"
                     sh "ls -al"
                 }
-                dir('../') {
-                    sh "pwd"
-                    sh "ls -al"
-                }
+                sh "pwd"
+                sh "ls -al"
 
             }
         }
