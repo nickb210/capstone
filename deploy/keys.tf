@@ -1,4 +1,22 @@
+# =================================================
+# Define & Create SSH key for EC2 instance
+# =================================================
+resource "tls_private_key" "private_key" {
+  algorithm = "RSA"
+  rsa_bits = 4096
+}
+
+# create ssh key 
 resource "aws_key_pair" "ssh_key" {
   key_name   = "ssh-key"
-  public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCoOOmoKtfTxzxTQC8vId9CCE2XE5Vr1qNOGh2dPCK9W05sQAAcKGvdo5VCjP54SGQRukyD5Pw7RNAJkwInOOK79bEptDGsmtFFiAqBKev7t2FDHbsk+wx2WOTvTIDrl7cYtonV19ZOnPXIlkVXbh18+/Vv4ZPvhac+9LnL/cOFrFiF46oMmcXu1L5N/M+m9lZTPPFb9eZvFqkDzC3rH6PKVX2BIOHyTP6Xr0CGoybMDZDH3MfyM8E1rHKXmJqOr9Waqwaa01QG95PkBYzAy0zKOfTKPXBpKWBiQPfzFeO8EtyQP/scuHusnX3oGzlZUNHVaBh2tTrApAJGHHQIxw13LMpjffnyGtVwMf27RKX0Wwo5o7vpH54HDUmo9JxPiIEuizf96knNLGFWa38eQ1NINNsw+XL8Z3zKich9y35UoGOz0CC5wJ3ePKTtNJ6zgT2f+pBtPtWtQtSldckMXP4llGD7JuRRqJxbOvtcvsj/5xepJrEV3q0qF2SmgVwoto3wKOYR8rgE9kB4Wn3S3MjEJI9oN7Qje2CcJmsd3WSY+HX/dTXpYh/O1sliQxZvc/84ekvpe6fU5dYki2i8KBrIpI5IGAxp5uq2vmSSPL6dshMM/IEqPjfgU0GP/IGH+tayALDP+Uf8FDniACy8brJS0LLJkHRZgVqFYFgZPJIh0w== nick@mbp"
+  public_key = tls_private_key.private_key.public_key_openssh
+
+  # save public and private keys to local machine
+  provisioner "local-exec" {
+    command = "echo '${tls_private_key.private_key.public_key_openssh}' > ./ssh-key.rsa"
+  }
+
+  provisioner "local-exec" {
+    command = "echo '${tls_private_key.private_key.private_key_pem}' > ./ssh-key.pem"
+  }
 }
