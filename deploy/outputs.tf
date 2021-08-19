@@ -4,6 +4,6 @@ output "instance_aws_eip" {
 
 
 output "public_dns" {
-    description = "List of public DNS names assigned to the instances"
-    value = aws_instance.Capstone.public_dns
+  description = "List of public DNS names assigned to the instances"
+  value       = aws_instance.Capstone.public_dns
 }
