@@ -45,6 +45,7 @@ pipeline {
                     sh '''export EC2_IP=$(cat ec2_ip)'''
 
                     withEnv(["EC2_IP=${cat ec2_ip}"]){
+                        sh "echo withENV==========="
                         sh "cat ec2_ip"
                         sh "echo ${env.EC2_IP}"
                         sh "ssh -i ${env.PRIVATE_KEY} ec2-user@ec2-${env.EC2_IP}.compute-1.amazonaws.com"
