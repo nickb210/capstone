@@ -35,7 +35,7 @@ pipeline {
                 sh "chmod 400 ${env.PRIVATE_KEY}"
 
                 dir ('/Users/nicholausbrell/Desktop/capstone/deploy/') {
-                    sh "terraform output instance_aws_eip > ec2_ip"
+                    sh "${env.TERRAFORM_HOME}/terraform output instance_aws_eip > ec2_ip"
                     sh "cat ec2_ip"
                     //sh "sed -i -e 's/\./-/g' ec2_ip"
                     //sh '''sed -i -e "s/\./-/g" ec2_ip'''
