@@ -8,7 +8,7 @@
   }
 
   body {
-    background-color:lightgreen;
+    background-color:steelblue;
   }
 
   label {
@@ -46,12 +46,29 @@
     <input type="text" id="username" name="username" placeholder="username" class="wrapper">
   
     <label for="password" class="wrapper">Password:</label>
-    <input type="text" id="password" name="password" placeholder="password" class="wrapper" required>
+    <input type="password" id="password" name="password" placeholder="password" class="wrapper" required>
 
     <div style="text-align: center; border: none">
         <button type="submit" class="button" name="login" value="login" formmethod="post">
           Login
         </button>
+    </div>
+
+    <div>
+      <label class="wrapper" for="checkbox">Show Password</label>
+      <input type="checkbox" id="checkbox" onclick="myFunction()" class="wrapper">
+    
+      <script>
+      function myFunction() {
+        var x = document.getElementById("password");
+        if (x.type === "password") {
+          x.type = "text";
+        } else {
+          x.type = "password";
+        }
+      }
+      </script>
+
     </div>
 
   </form>
