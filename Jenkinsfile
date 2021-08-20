@@ -43,8 +43,8 @@ pipeline {
                     //sh "sed -i -e 's/\"//g' ec2_ip"
                     sh """sed -i -e "s/\\"//g" ec2_ip"""
                     sh '''export EC2_IP=$(cat ec2_ip)'''
-                    
-                    withEnv(["EC2_IP=cat ec2_ip"]){
+
+                    withEnv(["EC2_IP=(cat ec2_ip)"]){
                         sh "cat ec2_ip"
                         sh "echo ${env.EC2_IP}"
                     }
