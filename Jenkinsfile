@@ -10,7 +10,7 @@ pipeline {
         stage('Test') {
             steps {
                 echo "**********************************************"
-                echo "              LS + PWD"
+                echo "              TEST"
                 echo "**********************************************"
                 sh "pwd"
                 sh "ls -al"
@@ -25,22 +25,19 @@ pipeline {
 
             }
         }
-        stage('Terraform init') {
+
+        stage('Pull new image') {
             steps {
                 echo "**********************************************"
-                echo "              TERRAFORM INIT"
+                echo "              TEST"
                 echo "**********************************************"
-                sh "${env.TERRAFORM_HOME}/terraform -chdir=deploy/ init"
+
+                sh "chmod 400 ${env.PRIVATE_KEY}"
+                sh "ssh -i ${env.PRIVATE_KEY} "
+
+                
             }
         }
-        
-        stage('Terraform plan') {
-            steps {
-                echo "**********************************************"
-                echo "              TERRAFORM PLAN"
-                echo "**********************************************"
-                sh "${env.TERRAFORM_HOME}/terraform -chdir=deploy/ plan"
-            }
-        }
+
     }
 }
