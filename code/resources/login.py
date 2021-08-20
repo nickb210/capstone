@@ -45,7 +45,8 @@ class Login(Resource):
         
         # check to see if password matches user credentials in DB.
         if user:
-            if user.password != password:
+            # check to see if hashed password in db matches hashed password entered on page
+            if not user.check_password(password):
                 return {"message": "Incorrect password."}, 400
             
             return {"message": "logged in as '{}'.".format(user.username)}

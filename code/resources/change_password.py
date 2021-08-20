@@ -37,11 +37,6 @@ class ChangePassword(Resource):
         username     = data["username"]
         old_password = data["old_password"]
         new_password = data["new_password"]
-        
-        #username = request.form.get("username")
-        #old_password = request.form.get("old_password")
-        #new_password = request.form.get("new_password")
-        
 
         user = UserModel.find_by_username(username)
         
@@ -50,7 +45,8 @@ class ChangePassword(Resource):
             return {"message": "user '{}' does not exists".format(username)}, 400
         
         # if the current password does not match
-        if user.password != old_password:
+        #if user.password != old_password:
+        if not user.check_password(old_password):
             return {"message": "password does not match your old password"}, 404
         
         user.change_password(new_password)

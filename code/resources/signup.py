@@ -39,6 +39,9 @@ class SignUp(Resource):
         
         # create user
         user = UserModel(username, password)
+        
+        # hash user password
+        user.hash_password(password)
     
         # check to see if user already exists
         if UserModel.find_by_username(user.username):

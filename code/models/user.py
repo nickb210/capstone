@@ -1,4 +1,5 @@
 from db import db
+from werkzeug.security import generate_password_hash, check_password_hash
 
 class UserModel(db.Model):
     __tablename__ = 'users'
@@ -29,7 +30,14 @@ class UserModel(db.Model):
     def delete_from_db(self):
         db.session.delete(self)
         db.session.commit()
-        
+    
+    def hash_password(self, pw):
+        self.password = generate_password_hash(pw)
+    
+    def check_password(self, pw):
+        return check_password_hash(self.password, pw)
+    
+    
     # find a user by their username
     @classmethod
     def find_by_username(cls, username):
@@ -46,7 +54,8 @@ class UserModel(db.Model):
     
     
     def change_password(self, new_password):
-        self.password = new_password
+        #self.password = new_password
+        self.password = generate_password_hash(new_password)
         db.session.commit()
         
         
