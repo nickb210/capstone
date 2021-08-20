@@ -42,7 +42,7 @@ pipeline {
                     sh ("""sed -i -e "s/\\./-/g" ec2_ip""")
                     //sh "sed -i -e 's/\"//g' ec2_ip"
                     sh """sed -i -e "s/\\"//g" ec2_ip"""
-                    sh "export EC2_IP=$(cat ec2_ip)"
+                    sh '''export EC2_IP=$(cat ec2_ip)'''
                     sh "cat ec2_ip"
                 }
                 sh "export EC2_IP=$(terraform output instance_aws_eip)
