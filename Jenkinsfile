@@ -44,7 +44,7 @@ pipeline {
 
                     // Script to set EC2 instance ip address to Jenkinsfile environment variable
                     script {
-                        env.EC2_IP = readFile 'ec2_ip' 
+                        env.EC2_IP = readFile('ec2_ip').trim()
                     }
                     echo "${env.EC2_IP}"
                     sh "ssh -i ${env.PRIVATE_KEY} ec2-user@${env.EC2_IP}.compute-1.amazonaws.com \"whoami\" "
