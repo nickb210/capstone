@@ -48,8 +48,8 @@ pipeline {
                     sh "ssh -i ${env.PRIVATE_KEY} ec2-user@ec2-${env.EC2_IP}.compute-1.amazonaws.com \"sudo docker image rm ${env.DOCKER_IMG_ID}\" "
 
                     // pull new image from dockerhub, the run image just pulled
-                    sh "ssh -i ${env.PRIVATE_KEY} ec2-user@ec2-${env.EC2_IP}.compute-1.amazonaws.com \"sudo docker pull nickb09/capstone:latest\" "
-                    sh "ssh -i ${env.PRIVATE_KEY} ec2-user@ec2-${env.EC2_IP}.compute-1.amazonaws.com \"sudo docker run -d -p 80:80 nickb09/capstone:latest\" "
+                    sh "ssh -i ${env.PRIVATE_KEY} ec2-user@ec2-${env.EC2_IP}.compute-1.amazonaws.com \"sudo docker pull nickb09/capstone\" "
+                    sh "ssh -i ${env.PRIVATE_KEY} ec2-user@ec2-${env.EC2_IP}.compute-1.amazonaws.com \"sudo docker run -d -p 80:80 nickb09/capstone\" "
                     
                 }
             }
