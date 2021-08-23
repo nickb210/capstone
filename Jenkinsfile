@@ -41,6 +41,10 @@ pipeline {
                     sh ("""sed -i -e "s/\\./-/g" ec2_ip""")
                     sh """sed -i -e "s/\\"//g" ec2_ip"""
                     sh '''export EC2_IP=$(cat ec2_ip)'''
+                    script {
+                        env.EC2_IP = readfile 'ec2_ip' 
+                    }
+                    echo "${env.EC2_IP}"
 
                     //sh """ssh -i ${env.PRIVATE_KEY} ec2-user@ec2-52-202-178-179.compute-1.amazonaws.com \"sudo docker pull nickb09/capstone:latest\" """
                     //sh """ssh -i ${env.PRIVATE_KEY} ec2-user@ec2-52-202-178-179.compute-1.amazonaws.com \"sudo docker pull nickb09/capstone:latest\" """
