@@ -20,13 +20,16 @@ pipeline {
                     sh ("""sed -i -e "s/\\"//g" ec2_ip""")
 
                     // Script to set EC2 instance ip address to Jenkinsfile environment variable
+                    //script {
+                    //    env.EC2_IP = readFile('ec2_ip').trim()
+                    //}
+
+                    // save EC2 instance IP address to variable env.EC2_IP
+                    // save docker image ID to variable env.DOCKER_IMG_ID
+                    // save docker container ID to variable env.DOCKER_CONTAINER_ID
                     script {
                         env.EC2_IP = readFile('ec2_ip').trim()
-                    }
-                    echo "${env.EC2_IP}"
 
-                    // save docker image ID to variable env.DOCKER_IMG_ID
-                    script {
                         env.DOCKER_IMG_ID = sh (
                             script: "ssh -i ${env.PRIVATE_KEY} ec2-user@ec2-${env.EC2_IP}.compute-1.amazonaws.com \"sudo docker image ls -aq\"",
                             returnStdout: true
@@ -37,14 +40,8 @@ pipeline {
                             returnStdout: true
                         ).trim()
                     }
-                    // save docker container ID to variable env.DOCKER_CONTAINER_ID
-                    //script {
-                    //    env.DOCKER_CONTAINER_ID = sh (
-                    //        script: "ssh -i ${env.PRIVATE_KEY} ec2-user@ec2-${env.EC2_IP}.compute-1.amazonaws.com \"sudo docker container ls -aq\"",
-                    //        returnStdout: true
-                    //    ).trim()
-                    //}
 
+                    echo "EC2_IP              = ${env.EC2_IP}"
                     echo "DOCKER_IMG_ID       = ${env.DOCKER_IMG_ID}"
                     echo "DOCKER_CONTAINER_ID = ${env.DOCKER_CONTAINER_ID}"
 
