@@ -36,11 +36,11 @@ pipeline {
 
                 dir ('/Users/nicholausbrell/Desktop/capstone/deploy/') {
                     sh "${env.TERRAFORM_HOME}/terraform output instance_aws_eip > ec2_ip"
-                    sh "cat ec2_ip"
+
+                    //sh "cat ec2_ip"
 
                     sh ("""sed -i -e "s/\\./-/g" ec2_ip""")
-                    sh """sed -i -e "s/\\"//g" ec2_ip"""
-                    sh '''export EC2_IP=$(cat ec2_ip)'''
+                    sh ("""sed -i -e "s/\\"//g" ec2_ip""")
 
                     // Script to set EC2 instance ip address to Jenkinsfile environment variable
                     script {
@@ -48,7 +48,8 @@ pipeline {
                     }
                     echo "${env.EC2_IP}"
                     sh "ssh -i ${env.PRIVATE_KEY} ec2-user@ec2-${env.EC2_IP}.compute-1.amazonaws.com \"whoami\" "
-                    sh "ssh -i ${env.PRIVATE_KEY} ec2-user@ec2-${env.EC2_IP}.compute-1.amazonaws.com \"sudo docker container ls -q\" "
+                    sh "ssh -i ${env.PRIVATE_KEY} ec2-user@ec2-${env.EC2_IP}.compute-1.amazonaws.com \"sudo docker container stop \$(docker container ls -aq)\" "
+                    sh "ssh -i ${env.PRIVATE_KEY} ec2-user@ec2-${env.EC2_IP}.compute-1.amazonaws.com \"sudo docker container rm \$(docker container ls -aq)\" "
 
                     //sh """ssh -i ${env.PRIVATE_KEY} ec2-user@ec2-52-202-178-179.compute-1.amazonaws.com \"sudo docker pull nickb09/capstone:latest\" """
                     //sh """ssh -i ${env.PRIVATE_KEY} ec2-user@ec2-52-202-178-179.compute-1.amazonaws.com \"sudo docker pull nickb09/capstone:latest\" """
