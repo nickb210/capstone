@@ -2,29 +2,6 @@ pipeline {
     agent any
     
     stages {
-//        stage('Checkout') {
-//            steps {
-//                checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/nickb210/capstone']]])
-//            }
-//        }
-        stage('Test') {
-            steps {
-                echo "**********************************************"
-                echo "              LS"
-                echo "**********************************************"
-                sh "pwd"
-                sh "ls -al"
-
-                dir('deploy') {
-                    sh "pwd"
-                    sh "ls -al"
-                }
-                sh "pwd"
-                sh "ls -al"
-                sh "ls -alh ${env.PRIVATE_KEY}"
-
-            }
-        }
 
         stage('Pull new image') {
             steps {
@@ -49,7 +26,14 @@ pipeline {
                     echo "${env.EC2_IP}"
                     sh "ssh -i ${env.PRIVATE_KEY} ec2-user@ec2-${env.EC2_IP}.compute-1.amazonaws.com \"whoami\" "
 
-                    // save docker container ID to variable
+                    // save docker image ID to variable env.DOCKER_IMG_ID
+                    script {
+                        env.DOCKER_IMG_ID = sh (
+                            script: "ssh -i ${env.PRIVATE_KEY} ec2-user@ec2-${env.EC2_IP}.compute-1.amazonaws.com \"sudo docker image ls -aq\"",
+                            returnStdout: true
+                        ).trim()
+                    }
+                    // save docker container ID to variable env.DOCKER_CONTAINER_ID
                     script {
                         env.DOCKER_CONTAINER_ID = sh (
                             script: "ssh -i ${env.PRIVATE_KEY} ec2-user@ec2-${env.EC2_IP}.compute-1.amazonaws.com \"sudo docker container ls -aq\"",
@@ -57,6 +41,7 @@ pipeline {
                         ).trim()
                     }
 
+                    echo "DOCKER_IMG_ID       = ${env.DOCKER_IMG_ID}"
                     echo "DOCKER_CONTAINER_ID = ${env.DOCKER_CONTAINER_ID}"
 
                     sh "ssh -i ${env.PRIVATE_KEY} ec2-user@ec2-${env.EC2_IP}.compute-1.amazonaws.com \"sudo docker container stop ${env.DOCKER_CONTAINER_ID}\" "
