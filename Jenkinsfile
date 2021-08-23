@@ -52,12 +52,12 @@ pipeline {
                     // Stop and remove docker container
                     //sh "ssh -i ${env.PRIVATE_KEY} ec2-user@ec2-${env.EC2_IP}.compute-1.amazonaws.com \"sudo docker container stop \$(docker container ls -aq)\" "
 
-                    DOCKER_CONTAINER_ID = sh (
+                    env.DOCKER_CONTAINER_ID = sh (
                         script: "ssh -i ${env.PRIVATE_KEY} ec2-user@ec2-${env.EC2_IP}.compute-1.amazonaws.com \"sudo docker container ls -aq\"",
                         returnStdout: true
                     ).trim()
 
-                    echo "DOCKER_CONTAINER_ID = ${DOCKER_CONTAINER_ID}"
+                    echo "DOCKER_CONTAINER_ID = ${env.DOCKER_CONTAINER_ID}"
                     //sh "ssh -i ${env.PRIVATE_KEY} ec2-user@ec2-${env.EC2_IP}.compute-1.amazonaws.com \"sudo docker container rm \$(docker container ls -aq)\" "
 
                     // remove docker image
