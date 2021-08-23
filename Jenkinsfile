@@ -42,7 +42,7 @@ pipeline {
                     sh """sed -i -e "s/\\"//g" ec2_ip"""
                     sh '''export EC2_IP=$(cat ec2_ip)'''
                     script {
-                        env.EC2_IP = readfile 'ec2_ip' 
+                        env.EC2_IP = readFile 'ec2_ip' 
                     }
                     echo "${env.EC2_IP}"
 
