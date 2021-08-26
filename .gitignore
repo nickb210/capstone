@@ -44,3 +44,8 @@ dockerhub-jenkins-token
 *.pem
 *.rsa
 ec2_ip*
+
+Pipfile
+__init__.py*
+*.pyc
+
