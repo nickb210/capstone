@@ -1,7 +1,7 @@
 from flask_restful import Resource, reqparse
 from models.user import UserModel
 from resources.user import UserRegister
-from flask import request, make_response, render_template, redirect
+from flask import request, make_response, render_template, redirect, url_for
 
 class SignUp(Resource):
     parser = reqparse.RequestParser()
@@ -42,7 +42,7 @@ class SignUp(Resource):
         
         # hash user password
         user.hash_password(password)
-    
+        
         # check to see if user already exists
         if UserModel.find_by_username(user.username):
             return make_response(render_template("user_already_exists.html", user=user.username), 200, headers)
