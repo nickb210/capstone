@@ -16,7 +16,7 @@ See [minimum requirements](https://github.com/nickb210/capstone/blob/master/mini
 
 ![Jira Automation Rule](./pictures/jira-autmation-rule.jpg)
 
-2. In `Jenkins`, my job will run the pipeline from my *[Jenkinsfile](https://github.com/nickb210/capstone/blob/master/Jenkinsfile)* located on my github. 
+2. In `Jenkins`, my job will run the pipeline from my *[Jenkinsfile](https://github.com/nickb210/capstone/blob/master/Jenkinsfile)*. 
     - My *[Jenkinsfile](https://github.com/nickb210/capstone/blob/master/Jenkinsfile)* takes the IP address of the EC2 instance (defined in my `Terraform` output) and saves the IP to a file. Then runs 2 `sed` commands on that file in order to get the address in a desired format so I could `ssh` into my EC2 instance.
 
         - `Terraform` saves the ouput like such `"123.456.789.012"`, but I formatted it to `123-456-789-012`.
