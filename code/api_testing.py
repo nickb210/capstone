@@ -75,6 +75,7 @@ class ApiTest(unittest.TestCase):
         # when a user 'logs in' using the correct credentials, the message
         # "logged in as <username>" will be returned to the user in JSON format.
         assert "logged in as" in driver.page_source
+        
     '''
     def test_signup_page(self):
         driver = self.driver
@@ -83,7 +84,7 @@ class ApiTest(unittest.TestCase):
         username = driver.find_element_by_name("username")
         password = driver.find_element_by_name("password")
         
-        username.send_keys("test_user4")
+        username.send_keys("test_user1")
         
         password.send_keys("123")
         password.send_keys(Keys.RETURN)
