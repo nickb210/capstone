@@ -38,6 +38,7 @@ class ChangePassword(Resource):
         old_password = data["old_password"]
         new_password = data["new_password"]
 
+        # used to check and see if the user exsists
         user = UserModel.find_by_username(username)
         
         # if the user does not exists
@@ -45,7 +46,6 @@ class ChangePassword(Resource):
             return {"message": "user '{}' does not exists".format(username)}, 400
         
         # if the current password does not match
-        #if user.password != old_password:
         if not user.check_password(old_password):
             return {"message": "password does not match your old password"}, 404
         
