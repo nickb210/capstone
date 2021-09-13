@@ -52,7 +52,7 @@ class UserModel(db.Model):
     def find_all(cls):
         return cls.query.all()
     
-    
+    # update the users password
     def change_password(self, new_password):
         #self.password = new_password
         self.password = generate_password_hash(new_password)
