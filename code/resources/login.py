@@ -30,8 +30,6 @@ class Login(Resource):
         password = data["password"]
         
         headers = {"Content-Type": "text/html"}
-        #username = request.form.get("username")
-        #password = request.form.get("password")
         
         # check if fields are blank
         if username == '' or password == '':
