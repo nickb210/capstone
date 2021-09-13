@@ -7,20 +7,19 @@ from flask import request, make_response, render_template, redirect, url_for, fl
 class Home(Resource):
     @classmethod
     def get(cls):
-        
         headers = {"Content-Type": "text/html"}
+        
+        # display /home endpoint page
         return make_response(render_template("main.html"), 200, headers)
         
     @classmethod
     def post(cls):
-        
         headers = {"Content-Type": "text/html"}
         
         # Login as existing user.
         if request.form.get("login"):
             return redirect(url_for('login'))
-            
-            
+              
         # Signup a User.
         elif request.form.get("sign_up"):
             return redirect(url_for('signup'))
