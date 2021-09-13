@@ -47,6 +47,7 @@ class SignUp(Resource):
         if UserModel.find_by_username(user.username):
             return make_response(render_template("user_already_exists.html", user=user.username), 200, headers)
         
+        # write to database
         user.save_to_db()
         return make_response(render_template("user_created_successful.html", user=user.username), 200, headers)
         
