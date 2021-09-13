@@ -48,4 +48,4 @@ ec2_ip*
 Pipfile
 __init__.py*
 *.pyc
-
+code/data.db
