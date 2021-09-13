@@ -37,6 +37,7 @@ class Login(Resource):
         if username == '' or password == '':
             return {"message": "username & password cannot be left blank"}, 400
         
+        # check to see if the user exsists
         user = UserModel.find_by_username(username)
         
         # if the user does not exists
