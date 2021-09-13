@@ -24,19 +24,24 @@ api = Api(app)
 def create_tables():
     db.create_all()
 
-
 jwt = JWT(app, authenticate, identity)
 
+'''
+================================================
+                API ENDPOINTS
+================================================
+'''
 # API resrouces
 api.add_resource(Home, '/home')
 api.add_resource(ChangePassword, '/changepassword')
 api.add_resource(SignUp, '/signup')
 api.add_resource(Login, '/login')
 
+# endpoints used for testing
 api.add_resource(UserList, '/users')
 api.add_resource(User, '/user/<int:uid>')
 
-api.add_resource(UserRegister, '/register')
+#api.add_resource(UserRegister, '/register')
 
 if __name__ == '__main__':
     db.init_app(app)
