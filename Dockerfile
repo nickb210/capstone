@@ -1,7 +1,6 @@
 FROM python:3.8-alpine
 
 # Expose port 80
-EXPOSE 4444/tcp
 EXPOSE 80/tcp
 
 
