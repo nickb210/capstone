@@ -76,7 +76,9 @@ class ApiTest(unittest.TestCase):
         # "logged in as <username>" will be returned to the user in JSON format.
         assert "logged in as" in driver.page_source
         
-    '''
+    """
+    Test a user that wants to signup
+    """
     def test_signup_page(self):
         driver = self.driver
         driver.get("http://localhost/signup")
@@ -92,7 +94,7 @@ class ApiTest(unittest.TestCase):
         # if the user selects chooses a username that is already taken, the message
         # "<username> is already taken." would be returned to the user in JSON format.
         assert "is already taken." not in driver.page_source
-    '''
+
 
     """
     Test for changing a password for a user that does NOT exsist.
