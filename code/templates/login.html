@@ -12,10 +12,17 @@
     background: linear-gradient(to top right, #fc2c77 0%, #6c4079 100%) fixed;
   }
 
-  label {
+  h1 {
     text-align: center;
     font-family: roboto;
     font-weight: bold;
+    color: white;
+    margin: 8px 5px;
+  }
+
+  label {
+    text-align: center;
+    font-family: roboto;
     color: white;
     margin: 8px 5px;
   }
@@ -51,6 +58,7 @@
 
 
 <body>
+  <h1 class="wrapper">Login</h1>
   <form>
     <label for="username" class="wrapper">Username:</label>
     <input type="text" id="username" name="username" placeholder="username" class="wrapper">
