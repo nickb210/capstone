@@ -29,15 +29,11 @@ See [minimum requirements](https://github.com/nickb210/capstone/blob/master/mini
     
 ### III. Web Application
 1. My Web application consists of 4 different endpoints: `/home`, `/login`, `/signup`, and `/changepassword`.
-
     - `/home` 
 <img src="./pictures/home.png" alt="drawing" width="400"/>
-
     - `/login`
 <img src="./pictures/login.png" alt="drawing" width="400"/>
-
     - `/signup`
 <img src="./pictures/signup.png" alt="drawing" width="400"/>
-
     - `/changepassword`
 <img src="./pictures/changepassword.png" alt="drawing" width="400"/>
