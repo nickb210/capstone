@@ -27,3 +27,9 @@ See [minimum requirements](https://github.com/nickb210/capstone/blob/master/mini
     - Then the latest `Docker` image is pulled from my [DockerHub](https://hub.docker.com/repository/docker/nickb09/capstone) repository and ran on my EC2 instance.
     ![Snippet from JenkinsFile](./pictures/dockerPipeline.png)
     
+### III. Web Application
+1. My Web application consists of 4 different endpoints: `/home`, `/login`, `/signup`, and `/changepassword`.
+<img src="./pictures/home.png" alt="drawing" width="400"/>
+<img src="./pictures/login.png" alt="drawing" width="400"/>
+<img src="./pictures/signup.png" alt="drawing" width="400"/>
+<img src="./pictures/changepassword.png" alt="drawing" width="400"/>
