@@ -32,7 +32,7 @@ See [minimum requirements](https://github.com/nickb210/capstone/blob/master/mini
 
 - `/home`
 <img src="./pictures/home.png" alt="drawing" width="400"/>
-- `/login`
+* `/login`
 <img src="./pictures/login.png" alt="drawing" width="400"/>
 - `/signup`
 <img src="./pictures/signup.png" alt="drawing" width="400"/>
