@@ -12,7 +12,7 @@ pipeline {
                 sh "chmod 400 ${env.PRIVATE_KEY}"
                 
                 /*Ouput terraform variable (EC2 instances IP address) and save it locally to the file 'ec2_ip'*/
-                dir ('/Users/nicholausbrell/Desktop/Critical\ Design\ +\ AVT/capstone/deploy/') {
+                dir ('/Users/nicholausbrell/Desktop/Critical Design + AVT/capstone/deploy/') {
                     sh "${env.TERRAFORM_HOME}/terraform output instance_aws_eip > ec2_ip"
                     
                     /*FILE ec2_ip: replace every '.' with a '-'
