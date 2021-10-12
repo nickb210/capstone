@@ -11,11 +11,16 @@ pipeline {
 
                 sh "chmod 400 ${env.PRIVATE_KEY}"
                 
-                /**/
-                dir ('/Users/nicholausbrell/Desktop/capstone/deploy/') {
+                /*Ouput terraform variable (EC2 instances IP address) and save it locally to the file 'ec2_ip'*/
+                dir ('/Users/nicholausbrell/Desktop/Critical\ Design\ +\ AVT/capstone/deploy/') {
                     sh "${env.TERRAFORM_HOME}/terraform output instance_aws_eip > ec2_ip"
                     
+                    /*FILE ec2_ip: replace every '.' with a '-'
+                    "1.2.3.4" -> 1-2-3-4
+                    */
                     sh ("""sed -i -e "s/\\./-/g" ec2_ip""")
+
+                    /*FILE ec2_ip: remove quotation marks*/
                     sh ("""sed -i -e "s/\\"//g" ec2_ip""")
 
                     /* 
@@ -43,7 +48,7 @@ pipeline {
 
                     // Stop and remove docker container
                     sh "ssh -o \"StrictHostKeyChecking no\" -i ${env.PRIVATE_KEY} ec2-user@ec2-${env.EC2_IP}.compute-1.amazonaws.com \"sudo docker container stop ${env.DOCKER_CONTAINER_ID}\" "
-                    sh "ssh -i ${env.PRIVATE_KEY} ec2-user@ec2-${env.EC2_IP}.compute-1.amazonaws.com \"sudo docker container rm ${env.DOCKER_CONTAINER_ID}\" "
+                    sh "ssh -o \"StrictHostKeyChecking no\" -i ${env.PRIVATE_KEY} ec2-user@ec2-${env.EC2_IP}.compute-1.amazonaws.com \"sudo docker container rm ${env.DOCKER_CONTAINER_ID}\" "
                     
                     // Remove docker image
                     sh "ssh -o \"StrictHostKeyChecking no\" -i ${env.PRIVATE_KEY} ec2-user@ec2-${env.EC2_IP}.compute-1.amazonaws.com \"sudo docker image rm ${env.DOCKER_IMG_ID}\" "
